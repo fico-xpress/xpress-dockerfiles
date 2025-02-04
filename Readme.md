@@ -34,7 +34,7 @@ The Xpress Python package comes with a community license by default.
 
 The list of Python versions officially supported for each version of Xpress can be found in the table below.
 
-| Xpress     |      Supported Python Vesion                     |
+| Xpress     |      Supported Python Version                     |
 |:----------:|:------------------------------------------------:|
 | 9.5        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
 | 9.4        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
