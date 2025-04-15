@@ -44,7 +44,9 @@ The list of Python versions officially supported for each version of Xpress can 
 While other combinations may be used, the resulting image might be unstable.
 
 ## Dockerfile for FICO Xpress distribution
-The Dockerfile for the distribution should be placed into the same folder as the ```install.sh``` install script, Kalis terms and conditions ```kalis_license.txt``` and tarball.
+
+First, unpack the distribution tarball.
+Then, copy the Dockerfile for the distribution into the same folder as the ```install.sh``` install script, Kalis terms and conditions ```kalis_license.txt``` and the gzipped tarball.
 
 After creating a user account (free of charge) and logging in to the [FICO Xpress Optimization Community](https://community.fico.com/s/optimization), you can download the Linux x86_64 tarball by searching for the download 'FICO Xpress (Mosel & Solver) - Linux'.
 
