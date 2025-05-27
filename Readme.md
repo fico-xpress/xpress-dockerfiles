@@ -20,8 +20,8 @@ This can be done, for example, by running the following command in the directory
 
 ```bash
 docker image build \
-    --build-arg XPRESS_VERSION=9.5.3 \
-    --build-arg PYTHON_VERSION=3.12.0 \
+    --build-arg XPRESS_VERSION=9.6.0 \
+    --build-arg PYTHON_VERSION=3.13.0 \
     --tag xpress/python .
 ```
 
@@ -34,8 +34,9 @@ The Xpress Python package comes with a community license by default.
 
 The list of Python versions officially supported for each version of Xpress can be found in the table below.
 
-| Xpress     |      Supported Python Vesion                     |
+| Xpress     |      Supported Python Vesrion                    |
 |:----------:|:------------------------------------------------:|
+| 9.6        |  3.13<br>3.12<br>3.11<br>3.10<br>3.9             |
 | 9.5        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
 | 9.4        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
 | 9.3        |  3.11<br>3.10<br>3.9<br>3.8                      |
@@ -72,9 +73,20 @@ COMPONENTS                      'full' or comma separated list of the following 
                                 - interfaces      install the FICO Xpress Optimizer interfaces
                                 - dev-components  install the FICO Xpress developer libraries and headers
                                 - examples        install the Examples
+                                - xpnll           install the Web Licensing Library
+                                - insight-cli     install the FICO Xpress Insight commandline interface
                                 defaults to minimal install
 ```
 By adding 'kalis' in the list of components, the user accepts the Kalis license in 'kalis_license.txt' in the installation tarball.
+
+> [!CAUTION]
+> In Xpress 9.6 the Web Licensing Library is not part of the `full` installation.
+
+> [!TIP]
+> To have the `full` Xpress installation together with Web Licensing Library, add all above components together with `xpnll` as a coma separated string.
+
+> [!IMPORTANT]
+> The Web Licensing Library will be part of the `full` installation starting Xpress 9.7.
 
 FICO Xpress will be installed into ```/opt/xpressmp```.
 
