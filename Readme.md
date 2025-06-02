@@ -68,7 +68,7 @@ The syntax is the following:
 ```bash
 COMPONENTS                      'full' or comma separated list of the following components:
                                 - mosel           install the FICO Xpress Mosel components
-                                - kalis           install the FICO Xpress-Kalis constraints programming engine for Mosel
+                                - kalis           install the FICO Xpress Kalis constraints programming engine for Mosel
                                 - cli             install the FICO Xpress commandline interface
                                 - interfaces      install the FICO Xpress Optimizer interfaces
                                 - dev-components  install the FICO Xpress developer libraries and headers
