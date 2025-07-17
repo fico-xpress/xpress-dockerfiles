@@ -1,6 +1,6 @@
 ############################################################################
 #
-#  (c) Copyright 2018 Fair Isaac Corporation
+#  (c) Copyright 2025 Fair Isaac Corporation
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -16,12 +16,12 @@
 #
 ############################################################################
 
-FROM ubuntu:20.04 as optimizer
+FROM ubuntu:24.04 as optimizer
 ARG COMPONENTS
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y \
 	&& apt-get upgrade -y \
-	&& apt-get install -y libncurses5 \
+	&& apt-get install -y libncurses6 \
 	&& rm -rf /var/lib/apt/lists/*
 
 ENV XPRESSTMP=/tmp/xpressmp \

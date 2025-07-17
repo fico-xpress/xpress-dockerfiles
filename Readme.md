@@ -1,12 +1,12 @@
-# Creating FICO Xpress Docker image and container
+# Creating FICO® Xpress Docker image and container
 
-To create a FICO Xpress image and container, Dockerfiles are provided in this repository.
-We provide a Dockerfile to install FICO Xpress Solver distribution with FICO Xpress Mosel and other interfaces, and a Dockerfile to install the FICO Xpress Python Solver interface.
+To create a FICO® Xpress image and container, Dockerfiles are provided in this repository.
+We provide a Dockerfile to install FICO® Xpress Solver distribution with FICO® Xpress Mosel and other interfaces, and a Dockerfile to install the FICO® Xpress Python Solver interface.
 
-## Licensing
+## License
 
-These Dockerfiles include FICO Xpress software.
-By downloading any of these Dockerfiles, you agree to the Community License terms of the [Xpress Shrinkwrap License Agreement](https://community.fico.com/s/contentdocument/06980000002h0i5AAA) with respect to the included FICO Xpress software.
+These Dockerfiles include FICO® Xpress software.
+By downloading any of these Dockerfiles, you agree to the Community License terms of the [Xpress Shrinkwrap License Agreement](https://community.fico.com/s/contentdocument/06980000002h0i5AAA) with respect to the included FICO® Xpress software.
 
 The images created by the Dockerfiles also contain other, separate, distinct software which may be subject to other licenses (such as Bash, etc. from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 It is the image user's responsibility to ensure that any use complies with the relevant licenses for all software contained within.
@@ -20,7 +20,7 @@ This can be done, for example, by running the following command in the directory
 
 ```bash
 docker image build \
-    --build-arg XPRESS_VERSION=9.6.0 \
+    --build-arg XPRESS_VERSION=9.7.0 \
     --build-arg PYTHON_VERSION=3.13.0 \
     --tag xpress/python .
 ```
@@ -32,24 +32,29 @@ docker run --interactive --tty xpress/python
 
 The Xpress Python package comes with a community license by default.
 
-The list of Python versions officially supported for each version of Xpress can be found in the table below.
+The Dockerfile provides a tested combination of an underlying image, a FICO® Xpress release version and a Python version.
 
-| Xpress     |      Supported Python Version                    |
-|:----------:|:------------------------------------------------:|
-| 9.6        |  3.13<br>3.12<br>3.11<br>3.10<br>3.9             |
-| 9.5        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
-| 9.4        |  3.12<br>3.11<br>3.10<br>3.9<br>3.8              |
-| 9.3        |  3.11<br>3.10<br>3.9<br>3.8                      |
-| 9.2        |  3.11<br>3.10<br>3.9<br>3.8                      |
+> [!CAUTION]
+> While other combinations may be used, the resulting image might be unstable.
+> If you build the image for an oder version of Xpress than the newest release, you might need to adjust the baseline image and python versions for older ones.
+> The list of officially supported distributions and Python versions for each version of Xpress can be found on the official [FICO® Xpress documentation](https://www.fico.com/fico-xpress-optimization/docs/latest/installguide/dhtml/chapinst3.html).
+> For each version of Xpress the list of officially supported distributions can be found in the [supported platforms](https://www.fico.com/fico-xpress-optimization/docs/latest/installguide/dhtml/chapinst3.html) section of the official [FICO® Xpress documentation](https://www.fico.com/fico-xpress-optimization/docs/).
 
-While other combinations may be used, the resulting image might be unstable.
-
-## Dockerfile for FICO Xpress distribution
+## Dockerfile for FICO® Xpress distribution
 
 First, unpack the distribution tarball.
 Then, copy the Dockerfile for the distribution into the same folder as the ```install.sh``` install script, Kalis terms and conditions ```kalis_license.txt``` and the gzipped tarball.
 
-After creating a user account (free of charge) and logging in to the [FICO Xpress Optimization Community](https://community.fico.com/s/optimization), you can download the Linux x86_64 tarball by searching for the download 'FICO Xpress (Mosel & Solver) - Linux'.
+You can download the distribution tarball in the following ways:
+1. customers find it in the FICO® download portals, and
+2. community users can find it after signing up for the [FICO® Xpress Community License](https://www.fico.com/en/fico-xpress-community-license).
+
+The Dockerfile provides a tested combination of an underlying image and a FICO® Xpress release version.
+
+> [!CAUTION]
+> While other combinations may be used, the resulting image might be unstable.
+> If you build the image for an older version of Xpress, you might need to adjust the version of the baseline image to an older one.
+> For each version of Xpress the list of officially supported distributions and Python versions can be found in the [supported platforms](https://www.fico.com/fico-xpress-optimization/docs/latest/installguide/dhtml/chapinst3.html) section of the official [FICO® Xpress documentation](https://www.fico.com/fico-xpress-optimization/docs/).
 
 ### Using Docker CLI
 
@@ -61,7 +66,7 @@ docker image build \
     --tag xpress .
 ```
 
-Where ```COMPONENTS``` represents the FICO Xpress components to be installed.
+Where ```COMPONENTS``` represents the FICO® Xpress components to be installed.
 
 The syntax is the following:
 
@@ -88,7 +93,7 @@ By adding 'kalis' in the list of components, the user accepts the Kalis license 
 > [!IMPORTANT]
 > The Web Licensing Library will be part of the `full` installation starting Xpress 9.7.
 
-FICO Xpress will be installed into ```/opt/xpressmp```.
+FICO® Xpress will be installed into ```/opt/xpressmp```.
 
 After the image is created, an interactive container can be created with the following command:
 

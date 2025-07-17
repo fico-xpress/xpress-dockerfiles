@@ -1,6 +1,6 @@
 ############################################################################
 #
-#  (c) Copyright 2018 Fair Isaac Corporation
+#  (c) Copyright 2025 Fair Isaac Corporation
 #
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -16,14 +16,15 @@
 #
 ############################################################################
 
-ARG PYTHON_VERSION="3.12"
-FROM python:${PYTHON_VERSION}-slim-bullseye
-ARG XPRESS_VERSION="9.5.3"
+ARG PYTHON_VERSION="3.13"
+FROM python:${PYTHON_VERSION}-slim-bookworm
+ARG XPRESS_VERSION="9.7.0"
 LABEL version="${XPRESS_VERSION}"
 
 RUN apt-get update -y && apt-get upgrade -y \
     && apt-get install --no-install-recommends -y ca-certificates \
     && update-ca-certificates \
+    && pip install --upgrade pip setuptools \
     && python -m pip install xpress==${XPRESS_VERSION} \
     && rm -rf /var/lib/apt/lists/*
 
