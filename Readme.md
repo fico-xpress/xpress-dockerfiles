@@ -6,7 +6,7 @@ We provide a Dockerfile to install FICO® Xpress Solver distribution with FICO®
 ## License
 
 These Dockerfiles include FICO® Xpress software.
-By downloading any of these Dockerfiles, you agree to the Community License terms of the [Xpress Shrinkwrap License Agreement](https://community.fico.com/s/contentdocument/06980000002h0i5AAA) with respect to the included FICO® Xpress software.
+By downloading any of these Dockerfiles, you agree to the Community License terms of the [Xpress Shrinkwrap License Agreement](https://www.fico.com/en/shrinkwrap-license-agreement-fico-xpress-optimization-suite-on-premises) with respect to the included FICO® Xpress software.
 
 The images created by the Dockerfiles also contain other, separate, distinct software which may be subject to other licenses (such as Bash, etc. from the base distribution, along with any direct or indirect dependencies of the primary software being contained).
 It is the image user's responsibility to ensure that any use complies with the relevant licenses for all software contained within.
