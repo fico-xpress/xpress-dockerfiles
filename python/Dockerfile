@@ -18,7 +18,7 @@
 
 ARG PYTHON_VERSION="3.13"
 FROM python:${PYTHON_VERSION}-slim-bookworm
-ARG XPRESS_VERSION="9.7.0"
+ARG XPRESS_VERSION="9.8.0"
 LABEL version="${XPRESS_VERSION}"
 
 RUN apt-get update -y && apt-get upgrade -y \
