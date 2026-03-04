@@ -20,7 +20,7 @@ This can be done, for example, by running the following command in the directory
 
 ```bash
 docker image build \
-    --build-arg XPRESS_VERSION=9.8.0 \
+    --build-arg XPRESS_VERSION=9.8.1 \
     --build-arg PYTHON_VERSION=3.13.0 \
     --tag xpress/python .
 ```
