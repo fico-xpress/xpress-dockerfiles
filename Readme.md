@@ -20,14 +20,36 @@ This can be done, for example, by running the following command in the directory
 
 ```bash
 docker image build \
-    --build-arg XPRESS_VERSION=9.8.1 \
-    --build-arg PYTHON_VERSION=3.13.0 \
+    --build-arg XPRESS_VERSION=9.9.0 \
+    --build-arg PYTHON_VERSION=3.14.0 \
     --tag xpress/python .
 ```
 
 You can create a container and enter Python standard shell with the following command:
 ```bash
 docker run --interactive --tty xpress/python
+```
+
+To run a Python script from your local machine, mount a directory into the container using the `--volume` flag.
+For example, to run the script `/home/user/xpress-models/myscript.py`:
+
+```bash
+docker run --rm \
+    --volume /home/user/xpress-models:/work \
+    --workdir /work \
+    xpress/python \
+    python myscript.py
+```
+
+Since the container runs as a non-privileged user (`xprsuser`), ensure mounted files are readable by other users, or use the `--user` flag to run as your host user UID:
+
+```bash
+docker run --rm \
+    --volume /home/user/xpress-models:/work \
+    --workdir /work \
+    --user "$(id -u):$(id -g)" \
+    xpress/python \
+    python myscript.py
 ```
 
 The Xpress Python package comes with a community license by default.
@@ -95,6 +117,8 @@ By adding 'kalis' in the list of components, the user accepts the Kalis license 
 
 FICO® Xpress will be installed into ```/opt/xpressmp```.
 
+The image sets `PATH` to include `/opt/xpressmp/bin` via a Docker `ENV` instruction, so Xpress commands such as `optimizer` and `mosel` are available directly for all users inside the container without any additional setup.
+
 After the image is created, an interactive container can be created with the following command:
 
 ```bash
@@ -102,6 +126,8 @@ docker run --interactive --tty --name xpress_ctn --hostname xpressmp xpress /bin
 ```
 
 Note: A community license is available inside the image in ```/opt```.
+
+Note: The container runs as a non-privileged user `xprsuser` (group `xprsgroup`) by default.
 
 ### Example
 Here is a complete workflow to install Xpress with Xpress Mosel and examples.
@@ -117,6 +143,40 @@ docker run \
     --interactive --tty --name xpress_ctn \
     --hostname xpressmp \
     xpress /bin/bash
+```
+
+### Mounting your own files
+
+To run Xpress on problem files from your local machine, mount a directory into the container using the `--volume` flag.
+For example, to solve the problem file `/home/user/xpress-models/problem.mps`:
+
+```bash
+docker run --rm \
+    --volume /home/user/xpress-models:/work \
+    --workdir /work \
+    xpress \
+    optimizer problem.mps
+```
+
+To run a Mosel model `/home/user/xpress-models/model.mos`:
+
+```bash
+docker run --rm \
+    --volume /home/user/xpress-models:/work \
+    --workdir /work \
+    xpress \
+    mosel model.mos
+```
+
+Since the container runs as a non-privileged user (`xprsuser`), ensure mounted files are readable by other users, or use the `--user` flag to run as your host user UID:
+
+```bash
+docker run --rm \
+    --volume /home/user/xpress-models:/work \
+    --workdir /work \
+    --user "$(id -u):$(id -g)" \
+    xpress \
+    optimizer problem.mps
 ```
 
 # License

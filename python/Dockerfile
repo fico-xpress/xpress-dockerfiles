@@ -16,9 +16,9 @@
 #
 ############################################################################
 
-ARG PYTHON_VERSION="3.13"
+ARG PYTHON_VERSION="3.14"
 FROM python:${PYTHON_VERSION}-slim-bookworm
-ARG XPRESS_VERSION="9.8.1"
+ARG XPRESS_VERSION="9.9.0"
 LABEL version="${XPRESS_VERSION}"
 
 RUN apt-get update -y && apt-get upgrade -y \
@@ -27,5 +27,8 @@ RUN apt-get update -y && apt-get upgrade -y \
     && pip install --upgrade pip setuptools \
     && python -m pip install xpress==${XPRESS_VERSION} \
     && rm -rf /var/lib/apt/lists/*
+
+RUN groupadd -r xprsgroup && useradd -r -g xprsgroup -m xprsuser
+USER xprsuser
 
 CMD ["python"]

@@ -46,5 +46,5 @@ RUN cd ${XPRESSTMP} \
     && rm -rf ${XPRESSTMP}
 
 # Xpress is now fully installed and configured.
-# Depending on what you actually want to do in your container,
-# this may be a good time to create a non-privileged user and switch to that account.
+RUN groupadd -r xprsgroup && useradd -r -g xprsgroup -m xprsuser
+USER xprsuser
